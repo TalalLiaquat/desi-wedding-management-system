@@ -1,0 +1,50 @@
+services:
+  db:
+    image: postgres:16
+    container_name: desi_wedding_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: desi_wedding
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+    container_name: desi_wedding_backend
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - db
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: desi_wedding_frontend
+    environment:
+      VITE_API_PROXY_TARGET: http://backend:8000
+    ports:
+      - '5173:4173'
+    command: ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "4173"]
+    working_dir: /app
+
+  nginx:
+    image: nginx:stable-alpine
+    container_name: desi_wedding_nginx
+    ports:
+      - '80:80'
+    depends_on:
+      - frontend
+      - backend
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+
+volumes:
+  db_data:

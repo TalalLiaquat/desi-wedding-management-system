@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 20% 98%; /* Soft beige/white */
+    --foreground: 20 10% 10%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 20 10% 10%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 10% 10%;
+    
+    --primary: 345 75% 25%; /* Maroon #6B1025 */
+    --primary-foreground: 30 20% 98%;
+    
+    --secondary: 45 65% 52%; /* Gold #D4AF37 */
+    --secondary-foreground: 345 75% 15%;
+    
+    --muted: 30 10% 90%;
+    --muted-foreground: 20 10% 40%;
+    
+    --accent: 45 65% 52%;
+    --accent-foreground: 345 75% 25%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 30 10% 85%;
+    --input: 30 10% 85%;
+    --ring: 345 75% 25%;
+    
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    @apply tracking-tight;
+  }
+}
+
+.glass {
+  @apply bg-white/70 backdrop-blur-md border border-white/20;
+}
+
+.glass-dark {
+  @apply bg-black/40 backdrop-blur-md border border-white/10;
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #F5D76E 50%, #B08B20 100%);
+}
+
+.maroon-gradient {
+  background: linear-gradient(135deg, #6B1025 0%, #8E1632 100%);
+}
+
+.text-gradient-gold {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, #B08B20 0%, #D4AF37 50%, #8A6D19 100%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-gold/30 rounded-full hover:bg-brand-gold/50 transition-colors;
+}
