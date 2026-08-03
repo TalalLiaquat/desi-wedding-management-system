@@ -333,8 +333,13 @@ Potential enhancements for future releases:
 
 ## License
 
-No explicit license file is currently included in this repository. Add a license before publishing the project publicly.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
 ## Author
 
-Developed as a full-stack wedding management application for the Desi Wedding Management System project.
+**Talal Liaquat**
+
+Bachelor of Science in Computer Science (BSCS)  
+Sindh Madressatul Islam University (SMIU), Karachi
+
+Developed as a full-stack **Desi Wedding Management System** featuring React, FastAPI, PostgreSQL, Docker, JWT Authentication, and a premium luxury user interface for Pakistani wedding planning and vendor management.
